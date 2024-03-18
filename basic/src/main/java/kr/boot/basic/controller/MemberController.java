@@ -24,11 +24,13 @@ public class MemberController {
     public String create(MemberForm form) {
         Member member = new Member();
         member.setName(form.getName());
+
         if (memberService.join(member)) {
             return "redirect:/members";
         } else {
             return "redirect:/members/new";
         }
+
     }
 
     @GetMapping("/members")
@@ -37,4 +39,5 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/memberList";
     }
+
 }

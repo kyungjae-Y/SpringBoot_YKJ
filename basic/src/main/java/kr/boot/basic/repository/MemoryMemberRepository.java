@@ -5,8 +5,9 @@ import kr.boot.basic.domain.Member;
 import java.util.*;
 
 // DAO
-public class MemoryMemberRepository implements MemberRepository {
-    private static Map<Long, Member> store = new HashMap<>();
+public class MemoryMemberRepository implements MemberRepository{
+
+    private static Map<Long,Member> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override
@@ -22,8 +23,11 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> findByName(String name) {
-        return store.values().stream().filter(m -> m.getName().equals(name)).findAny();
+    public  Optional<Member> findByName(String name) {
+        return store.values()
+                .stream()
+                .filter(m -> m.getName().equals(name))
+                .findAny();
     }
 
     @Override

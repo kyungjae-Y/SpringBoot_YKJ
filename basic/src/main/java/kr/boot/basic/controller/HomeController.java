@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+
+
     @GetMapping("/servlet")
     public String basic() {
         return "basic";
-    }
+    }  // resources: templates/ +basic+ .html
+
 
     @GetMapping("/")
     public String home() {
@@ -21,4 +24,6 @@ public class HomeController {
         model.addAttribute("data", " 스프링 부트 시작~ ");
         return "hello";
     }
+
+
 }

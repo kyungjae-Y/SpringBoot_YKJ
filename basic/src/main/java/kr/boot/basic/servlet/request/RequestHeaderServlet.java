@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "requestHeaderServlet", urlPatterns = "/request-header")
+@WebServlet(name="requestHeaderServlet", urlPatterns = "/request-header")
 public class RequestHeaderServlet extends HttpServlet {
 // ctrl + o -> 메서드 열기 단축키
 
@@ -19,6 +19,7 @@ public class RequestHeaderServlet extends HttpServlet {
         printHeaders(req);
         printHeaderUtils(req);
         printEtc(req);
+
         resp.getWriter().write("ok");
     }
 
@@ -37,7 +38,8 @@ public class RequestHeaderServlet extends HttpServlet {
 
     private void printHeaders(HttpServletRequest req) {
         System.out.println("--- Headers - start ---");
-        req.getHeaderNames().asIterator().forEachRemaining(headerName -> System.out.println(headerName + ": " + req.getHeader(headerName)));
+        req.getHeaderNames().asIterator()
+                .forEachRemaining(headerName -> System.out.println(headerName + ": " + req.getHeader(headerName)));
         System.out.println("--- Headers - end ---");
         System.out.println();
     }
@@ -50,7 +52,8 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
 
         System.out.println("[Accept-Language 편의 조회]");
-        req.getLocales().asIterator().forEachRemaining(locale -> System.out.println("locale = " + locale));
+        req.getLocales().asIterator()
+                .forEachRemaining(locale -> System.out.println("locale = " + locale));
         System.out.println("req.getLocale() = " + req.getLocale());
         System.out.println();
 
