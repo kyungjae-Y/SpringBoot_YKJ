@@ -19,10 +19,10 @@
             <property name="hibernate.format_sql" value="true"/>
             <!-- Comment 확인 여부 -->
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!-- 쿼리문을 여기 사이즈 만큼 모아서 한방에 쿼리를 db 에 보냄   -->
+            <!-- 쿼리문을 여기 사이즈 만큼 모아서 한방에 쿼리를 db 에 보냄 -->
             <property name="hibernate.jdbc.batch_size" value="10"/>
-            <!-- value="create" 사용시 Drop Table이후 자동으로 Create Table 실행 => 실무 상황에서는 무조건 사용 X -->
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!-- value="create" 사용시 Drop Table 이후 자동으로 Create Table 실행 => 실무 상황에서는 무조건 사용 X -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>

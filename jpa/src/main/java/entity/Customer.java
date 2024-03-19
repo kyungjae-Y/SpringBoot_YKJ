@@ -14,6 +14,7 @@ public class Customer {
     @Column(name = "cutomer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    // @Basic
     String name;
     LocalDate regDate;
 
