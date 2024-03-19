@@ -2,18 +2,24 @@ package kr.boot.basic.service;
 
 import jakarta.transaction.Transactional;
 import kr.boot.basic.domain.Member;
-import kr.boot.basic.repository.MemberRepository;
+import kr.boot.basic.repository.SpringMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Transactional
 public class MemberService {
-    private final MemberRepository memberRepository;
+    // private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository repository) {
-        this.memberRepository = repository;
-    }
+    @Autowired
+    private SpringMemberRepository memberRepository;
+//    public MemberService(MemberRepository repository){
+//
+//        this.memberRepository = repository;
+//    }
 
     //    회원가입
     public boolean join(Member member) {
@@ -28,23 +34,20 @@ public class MemberService {
 
     // 이름 중복검사
     private boolean validateDuplicateMember(Member member) {
-//       if(memberRepository.findById(member.getId()) != null){
+//       if(memberRepository.findById(member.getId()) != null) {
 //           throw new IllegalArgumentException("이미 존재하는 회원입니다");
 //       }
-//        memberRepository.findById(member.getId())
-//                .ifPresent( m -> {throw new IllegalArgumentException("이미 존재하는 회원입니다");});
-        return memberRepository.findByName(member.getName()).isEmpty();
+//        memberRepository.findById(member.getId()).ifPresent( m -> {throw new IllegalArgumentException("이미 존재하는 회원입니다");});
+        return memberRepository.findByName(member.getName()) == null;   // memberRepository.findByName(member.getName()).isEmpty();
     }
 
     // 전체 회원조회
     public List<Member> findMembers() {
-        return memberRepository.findAll();
+        return memberRepository.findAll();  // select * from members;
     }
 
     // 회원 한명 조회
     public Optional<Member> findOneMember(Long id) {
         return memberRepository.findById(id);
     }
-
-
 }

@@ -24,16 +24,12 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
     public Member save(Member member) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         jdbcInsert.withCatalogName("bootdb") // database name 
-                .withTableName("Member")    	// INSERT INTO 'TABLE'
+                .withTableName("Member")        // INSERT INTO 'TABLE'
                 .usingGeneratedKeyColumns("id");    // primary key AUTO_INCREMENT
-
-
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", member.getName());
-
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
         member.setId(key.longValue());
-
         return member;
     }
 

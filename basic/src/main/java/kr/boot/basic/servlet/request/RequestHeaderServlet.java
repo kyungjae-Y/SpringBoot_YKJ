@@ -9,17 +9,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name="requestHeaderServlet", urlPatterns = "/request-header")
+@WebServlet(name = "requestHeaderServlet", urlPatterns = "/request-header")
 public class RequestHeaderServlet extends HttpServlet {
 // ctrl + o -> 메서드 열기 단축키
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         printStartLine(req);
         printHeaders(req);
         printHeaderUtils(req);
         printEtc(req);
-
         resp.getWriter().write("ok");
     }
 
@@ -38,8 +36,7 @@ public class RequestHeaderServlet extends HttpServlet {
 
     private void printHeaders(HttpServletRequest req) {
         System.out.println("--- Headers - start ---");
-        req.getHeaderNames().asIterator()
-                .forEachRemaining(headerName -> System.out.println(headerName + ": " + req.getHeader(headerName)));
+        req.getHeaderNames().asIterator().forEachRemaining(headerName -> System.out.println(headerName + " : " + req.getHeader(headerName)));
         System.out.println("--- Headers - end ---");
         System.out.println();
     }
@@ -50,13 +47,10 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("req.getServerName() = " + req.getServerName());
         System.out.println("req.getServerPort() = " + req.getServerPort());
         System.out.println();
-
         System.out.println("[Accept-Language 편의 조회]");
-        req.getLocales().asIterator()
-                .forEachRemaining(locale -> System.out.println("locale = " + locale));
+        req.getLocales().asIterator().forEachRemaining(locale -> System.out.println("locale = " + locale));
         System.out.println("req.getLocale() = " + req.getLocale());
         System.out.println();
-
         System.out.println("[cookie 편의 조회]");
         if (req.getCookies() != null) {
             for (Cookie cookie : req.getCookies()) {
@@ -64,12 +58,10 @@ public class RequestHeaderServlet extends HttpServlet {
             }
         }
         System.out.println();
-
-        // get에 value 가 없어서 조회된 type이 안나오는 것
+        // get 에 value 가 없어서 조회된 type 이 안나오는 것
         System.out.println("[Content 편의 조회]");
         System.out.println("req.getContentType() = " + req.getContentType());
         System.out.println("req.getCharacterEncoding() = " + req.getCharacterEncoding());
-
         System.out.println("--- Headers 편의 조회 end ---");
         System.out.println();
     }
@@ -82,12 +74,10 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("req.getRemoteAddr() = " + req.getRemoteAddr());
         System.out.println("req.getRemotePort() = " + req.getRemotePort());
         System.out.println();
-
         System.out.println("[Locale 정보]");
         System.out.println("req.getLocalName() = " + req.getLocalName());
         System.out.println("req.getLocalAddr() = " + req.getLocalAddr());
         System.out.println("req.getLocalPort() = " + req.getLocalPort());
-
         System.out.println("--- 기타 조회 end ---");
         System.out.println();
     }

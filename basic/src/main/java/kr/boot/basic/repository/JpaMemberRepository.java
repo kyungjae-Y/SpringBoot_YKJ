@@ -1,10 +1,12 @@
 package kr.boot.basic.repository;
 
+
 import jakarta.persistence.EntityManager;
 import kr.boot.basic.domain.Member;
 
 import java.util.List;
 import java.util.Optional;
+
 public class JpaMemberRepository implements MemberRepository {
     private final EntityManager em;
 
