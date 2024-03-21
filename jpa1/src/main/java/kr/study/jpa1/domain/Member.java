@@ -8,8 +8,9 @@ import lombok.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // jpa 만 내 객체를 생성할 수 있게
 public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="member_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
     private String loginId;
     private String password;
@@ -17,9 +18,10 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public void setId(Long id){
+    public void setId(Long id) {
         this.id = id;
     }
+
     @Builder
     public Member(String loginId, String password, String name) {
         this.loginId = loginId;

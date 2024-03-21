@@ -1,0 +1,29 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sampleDB?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    hibernate:
+      ddl-auto: create
+    # JDBC TimeZone Setting
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Seoul
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+server:
+  port: 8081

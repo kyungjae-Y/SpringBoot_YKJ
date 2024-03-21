@@ -9,10 +9,10 @@
     <form action="/study" method="POST">
         <div class="form-group">
             <label for="member"> 회원 </label>
-            <select name="memberId" id="member" class="form-control">
+            <select name="memberLoginId" id="member" class="form-control">
                 <option value="">회원선택</option>
                 <option th:each="member : ${members}"
-                        th:value="${member.getId()}"
+                        th:value="${member.getLoginId()}"
                         th:text="${member.getName()}"/>
             </select>
             <label for="studyDay">Study Day : </label>
@@ -20,7 +20,7 @@
                    th:max="${curdate}">
             <input type="time" id="startTime" name="startTime" class="form-control" th:value="${curtime}" required>
             <div>공부기록(분) :
-                <input type="number" name="studyMins" class="form-control" value="" min="1"></div>
+                <input type="number" name="studyMin" class="form-control" value="" min="1"></div>
             <div>Contents :
                 <input type="text" name="contents" class="form-control" value="" size="70"></div>
             <br><br>
