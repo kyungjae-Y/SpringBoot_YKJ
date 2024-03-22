@@ -1,4 +1,4 @@
-package kr.ex.querydsl.domain;
+package kr.ex.querydsl.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QHello extends EntityPathBase<Hello> {
 
-    private static final long serialVersionUID = 747046925L;
+    private static final long serialVersionUID = -1408564244L;
 
     public static final QHello hello = new QHello("hello");
 
